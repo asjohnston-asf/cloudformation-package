@@ -49,7 +49,7 @@ Resources:
               "Type": "Task",
               "Resource": "${LambdaArnB}",
               "ResultPath": "$.B",
-              "End": True
+              "End": true
             }
           }
         }
