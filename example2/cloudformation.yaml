@@ -1,0 +1,22 @@
+
+AWSTemplateFormatVersion: 2010-09-09
+
+Resources:
+
+  LambdaA:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: lambda_a/cloudformation.yaml
+
+  LambdaB:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: lambda_b/cloudformation.yaml
+
+  StepFunction:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: step-function/cloudformation.yaml
+      Parameters:
+        LambdaArnA: !GetAtt LambdaA.Outputs.LambdaArn
+        LambdaArnB: !GetAtt LambdaB.Outputs.LambdaArn
