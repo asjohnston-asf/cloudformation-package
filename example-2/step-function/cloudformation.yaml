@@ -1,0 +1,55 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Parameters:
+
+  LambdaArnA:
+    Type: String
+
+  LambdaArnB:
+    Type: String
+
+Resources:
+
+  Role:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          Action: sts:AssumeRole
+          Principal:
+            Service: states.amazonaws.com
+          Effect: Allow
+      Policies:
+      - PolicyName: policy
+        PolicyDocument:
+          Version: 2012-10-17
+          Statement:
+          - Effect: Allow
+            Action: lambda:InvokeFunction
+            Resource:
+            - !Ref LambdaArnA
+            - !Ref LambdaArnB
+
+  StepFunction:
+    Type: AWS::StepFunctions::StateMachine
+    Properties:
+      RoleArn: !GetAtt Role.Arn
+      DefinitionString: !Sub |-
+        {
+          "StartAt": "A",
+          "States": {
+            "A": {
+              "Type": "Task",
+              "Resource": "${LambdaArnA}",
+              "ResultPath": "$.A",
+              "Next": "B"
+            },
+            "B": {
+              "Type": "Task",
+              "Resource": "${LambdaArnB}",
+              "ResultPath": "$.B",
+              "End": True
+            }
+          }
+        }
