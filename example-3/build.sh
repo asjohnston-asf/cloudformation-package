@@ -1,7 +1,7 @@
 set -ex
 
 # install python dependencies
-pip3 install --system -r lambda-b/requirements.txt -t lambda-b/src/
+pip3 install --system --requirement lambda-b/requirements.txt --target lambda-b/src/
 
 # package cloudformation templates
 aws cloudformation package --s3-bucket cf-package-demo --template-file cloudformation.yaml --output-template-file packaged.yaml
