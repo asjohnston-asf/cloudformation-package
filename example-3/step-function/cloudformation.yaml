@@ -34,6 +34,7 @@ Resources:
   StepFunction:
     Type: AWS::StepFunctions::StateMachine
     Properties:
+      StateMachineName: cf-package-demo
       RoleArn: !GetAtt Role.Arn
       DefinitionString: !Sub |-
         {
