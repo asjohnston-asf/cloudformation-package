@@ -13,6 +13,7 @@ Resources:
   Lambda:
     Type: AWS::Lambda::Function
     Properties:
+      FunctionName: cf-example-1
       Code:
         S3Bucket: !Ref Bucket
         S3Key: !Ref Key
