@@ -1,4 +1,4 @@
 import requests
 
 def lambda_handler(event, context):
-    return "bar"
+    return "lambda B is working!"
