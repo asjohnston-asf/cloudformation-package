@@ -1,4 +1,4 @@
-set -e
+set -ex
 
 # package lambda function and prepare final cloudformation template
 aws cloudformation package --s3-bucket cf-package-demo --template-file cloudformation.yaml --output-template-file packaged.yaml

@@ -1,4 +1,4 @@
-set -e
+set -ex
 
 # build and upload lambda deployment package
 cd src/

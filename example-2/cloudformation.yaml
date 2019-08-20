@@ -5,7 +5,7 @@ Resources:
   Lambda:
     Type: AWS::Lambda::Function
     Properties:
-      FunctionName: cf-exapmle-2
+      FunctionName: cf-example-2
       Code: src/
       Handler: main.lambda_handler
       Role: !GetAtt Role.Arn

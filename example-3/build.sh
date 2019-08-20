@@ -1,4 +1,4 @@
-set -e
+set -ex
 
 # install python dependencies
 pip3 install --system -r lambda-b/requirements.txt -t lambda-b/src/
