@@ -1,2 +1,2 @@
 def lambda_handler(event, context):
-    return "foo"
+    return "lambda A is working!"
